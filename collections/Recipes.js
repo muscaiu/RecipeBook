@@ -5,7 +5,7 @@ Recipes.allow({
         return !!userId;
     }
 })
-
+//new type to use in RecipeSchema
 Ingredient = new SimpleSchema({
     name: {
         type: String
