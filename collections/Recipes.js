@@ -1,4 +1,10 @@
-Recipes = new Meteor.Collection('recipes');
+Recipes = new Mongo.Collection('recipes');
+//if userId is true then we can add to db
+Recipes.allow({
+    insert: function(userId, doc){
+        return !!userId;
+    }
+})
 
 RecipeSchema = new SimpleSchema({
     name: {
