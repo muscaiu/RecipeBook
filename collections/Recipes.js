@@ -6,6 +6,16 @@ Recipes.allow({
     }
 })
 
+Ingredient = new SimpleSchema({
+    name: {
+        type: String
+    },
+    ammount: {
+        type: String
+    }
+});
+
+//Add shcema for db and quickform
 RecipeSchema = new SimpleSchema({
     name: {
         type: String,
@@ -14,6 +24,18 @@ RecipeSchema = new SimpleSchema({
     desc: {
         type:String,
         label: "Description"
+    },
+    ingredients: {
+        //type: Ingredient //shows just 1 ingredient on page
+        type: [Ingredient] //[]makes autoform add +-
+    },
+    inMenu:{
+        type: Boolean,
+        defaultValue: false,
+        optional: true,
+        autoform:{
+            type: "hidden"
+        }
     },
     author: {
         type: String,
