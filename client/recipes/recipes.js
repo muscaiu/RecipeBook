@@ -15,3 +15,8 @@ Template.Recipes.helpers({
 });
 //console.log("access private: " + Meteor.settings.private.key);
 //console.log("access public: " + Meteor.settings.public.ga.account);
+Template.Recipes.events({
+    'click .new-recipe': () => {
+        Session.set('newRecipe', true);
+    }
+})
