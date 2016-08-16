@@ -1,3 +1,8 @@
+//using reactive-var package make SessionVariable for Template
+Template.Recipe.onCreated(function(){
+    this.editMode = new ReactiveVar(false);
+})
+
 Template.Recipe.events({
     'click .toggle-menu': function(){
         Meteor.call('toggleMenuItem', this._id, this.inMenu);
@@ -5,13 +10,17 @@ Template.Recipe.events({
     'click .fa-trash': function() {
         Meteor.call('deleteRecipe', this._id)
     },
-    'click .fa-pencil': function() {
-        Session.set('editMode', !Session.get('editMode'));
+    'click .fa-pencil': function(event, template) {
+        // Session.set('editMode', !Session.get('editMode'));
+        template.editMode.set(!template.editMode.get());
     }
 });
 
 Template.Recipe.helpers({
     updateRecipeId: function(){
         return this._id;
+    },
+    editMode: function(){
+        return Template.instance().editMode.get();
     }
 });
