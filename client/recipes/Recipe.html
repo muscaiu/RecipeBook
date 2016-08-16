@@ -3,7 +3,7 @@
         <h3>{{name}}</h3>
         <p>{{desc}}</p>
         <p>
-            {{#each ingredients}}
+            {{#each ingredients}} 
                 <span class="ingredient">{{name}} - {{ammount}}</span>
             {{/each}}
         </p>
@@ -15,5 +15,10 @@
         {{else}}
               <button class="btn-primary toggle-menu">Add To Menu</button>
         {{/if}}
+        {{> quickForm collection="Recipes"
+            id=updateRecipeId
+            type="update"
+            doc = this
+            autosave = true}}
     </article>
 </template>
